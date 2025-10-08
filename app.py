@@ -31,12 +31,12 @@ if st.button("週報を作成"):
     story = []
     lines = md.splitlines()
     for line in lines:
-    line = line.strip()
-    if not line:
-        story.append(Spacer(1, 8))
-        continue
-    if line.startswith("# "):
-        story.append(Paragraph(line[2:], normal_style))
-        story.append(Spacer(1, 6))
-    else:
-        story.append(Paragraph(line, normal_style))
+        line = line.strip()
+        if not line:
+            story.append(Spacer(1, 8))
+            continue
+        if line.startswith("# "):
+            story.append(Paragraph(line[2:], normal_style))
+            story.append(Spacer(1, 6))
+        else:
+            story.append(Paragraph(line, normal_style))
