@@ -28,3 +28,4 @@ normal_style = ParagraphStyle(name="NormalJP", parent=styles["Normal"], fontName
 story = []
 lines = md.splitlines()
 for line in lines:
+    pass
