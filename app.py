@@ -40,3 +40,14 @@ if st.button("週報を作成"):
             story.append(Spacer(1, 6))
         else:
             story.append(Paragraph(line, normal_style))
+    doc.build(story)
+    pdf_bytes = buf.getvalue()
+    
+    st.download_button(
+        "PDFをダウンロード",
+        data=pdf_bytes,
+        file_name="weekly_report.pdf",
+        mime="application/pdf",
+        use_container_width=True
+    )
+
