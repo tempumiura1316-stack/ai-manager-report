@@ -21,3 +21,5 @@ if st.button("週報を作成"):
 buf = io.BytesIO()
 doc = SimpleDocTemplate(buf, pagesize=A4, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
 pdfmetrics.registerFont(UnicodeCIDFont("HeiseiMin-W3"))
+styles = getSampleStyleSheet()
+normal_style = ParagraphStyle(name="NormalJP", parent=styles["Normal"], fontName="HeiseiMin-W3", fontSize=11, leading=16)
