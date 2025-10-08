@@ -2,26 +2,18 @@ import os
 import io
 import pandas as pd
 import streamlit as st
-
-# --- openai が未インストールでも自己解決する ---
-try:
-    from openai import OpenAI
-except ModuleNotFoundError:
-    import subprocess, sys
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "openai==1.51.0"])
-    from openai import OpenAI
-# ---------------------------------------------------
-
+from openai import OpenAI
 
 st.set_page_config(page_title="AI報告書メーカー", page_icon="🧠", layout="centered")
 st.title("🧠 AI報告書メーカー（シンプル版）")
 st.caption("日報を貼るだけ → 週報＋改善提案を自動生成")
 
 # ==== OpenAI クライアント ====
-api_key = os.getenv("OPENAI_API_KEY", st.secrets.get("OPENAI_API_KEY", None))
-if not api_key:
-    st.error("OPENAI_API_KEY が未設定です。StreamlitのSecretsに登録してください。")
-client = OpenAI(api_key=api_key) if api_key else None
+if "OPENAI_API_KEY" not in st.secrets:
+    st.error("OPENAI_API_KEY が未設定です。Secretsに登録してください。")
+    st.stop()
+
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # ==== 入力UI ====
 tab_text, tab_csv = st.tabs(["テキスト入力", "CSVアップロード（任意）"])
@@ -31,7 +23,7 @@ with tab_text:
     raw_text = st.text_area(
         "今日/今週の日報・メモ（自由形式OK）",
         height=220,
-        placeholder="例）\n・商談3件（A社：見積送付／B社：PoC提案／C社：競合比較）\n・問い合わせ対応7件、CS対応2件\n・KPI：新規リード12件（先週+3）..."
+        placeholder="例）商談3件（A社：見積送付／B社：PoC提案／C社：競合比較）..."
     )
 
 with tab_csv:
@@ -56,7 +48,6 @@ if clear:
         del st.session_state[k]
     st.rerun()
 
-# ==== 生成処理 ====
 PROMPT = """あなたは有能な営業マネージャーです。以下の原稿（日報やメモ）から、
 上司に伝わりやすい「週報」を日本語Markdownで作成してください。
 
@@ -71,8 +62,6 @@ PROMPT = """あなたは有能な営業マネージャーです。以下の原�
 """
 
 if gen:
-    if not client:
-        st.stop()
     if not raw_text or not raw_text.strip():
         st.warning("入力が空です。テキストを貼るかCSVをアップロードしてください。")
         st.stop()
@@ -81,7 +70,7 @@ if gen:
         try:
             prompt = PROMPT.format(raw=raw_text[:20000])
             res = client.chat.completions.create(
-                model="gpt-4o-mini",  # 速さ/コスト重視
+                model="gpt-4o-mini",
                 temperature=0.4,
                 messages=[{"role": "user", "content": prompt}],
             )
@@ -90,7 +79,6 @@ if gen:
         except Exception as e:
             st.error(f"生成エラー：{e}")
 
-# ==== 結果表示 ====
 if "md" in st.session_state:
     st.markdown("---")
     st.subheader("📄 生成結果（Markdown）")
