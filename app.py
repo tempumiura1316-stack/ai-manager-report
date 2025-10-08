@@ -1,5 +1,5 @@
-import sys, subprocess; subprocess.check_call([sys.executable, "-m", "pip", "install", "-U", "openai>=1.51.0", "httpx>=0.27.2", "httpcore>=1.0.5"])
 import streamlit as st
+import sys, subprocess; subprocess.check_call([sys.executable, "-m", "pip", "install", "-U", "openai>=1.51.0", "httpx>=0.27.2", "httpcore>=1.0.5"])
 from openai import OpenAI
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
