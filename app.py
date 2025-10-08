@@ -2,6 +2,7 @@ import streamlit as st
 import io
 from openai import OpenAI
 from reportlab.lib.pagesizes import A4
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
