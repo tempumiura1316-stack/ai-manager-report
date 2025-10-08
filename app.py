@@ -12,4 +12,4 @@ if st.button("週報を作成"):
     st.success("ここにAIの出力が表示されます（後で実装）")
     st.write(text)
     st.write("文字数:", len(text))
-    st.write(client.models.list())
+    st.write([m.id for m in client.models.list().data])
