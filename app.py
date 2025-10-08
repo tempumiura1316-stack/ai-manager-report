@@ -2,7 +2,16 @@ import os
 import io
 import pandas as pd
 import streamlit as st
-from openai import OpenAI
+
+# --- openai が未インストールでも自己解決する ---
+try:
+    from openai import OpenAI
+except ModuleNotFoundError:
+    import subprocess, sys
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "openai==1.51.0"])
+    from openai import OpenAI
+# ---------------------------------------------------
+
 
 st.set_page_config(page_title="AI報告書メーカー", page_icon="🧠", layout="centered")
 st.title("🧠 AI報告書メーカー（シンプル版）")
