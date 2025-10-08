@@ -1,6 +1,9 @@
 import streamlit as st
 from openai import OpenAI
 
+client = OpenAI()　#OpenAIのAPIと通信するための“クライアント（接続口）”
+
+
 st.set_page_config(page_title="AI報告書メーカー", page_icon="🧠")
 st.title("🧠 AI報告書メーカー（テスト版）")
 st.write("こんにちは！これは初期テスト用のStreamlitアプリです。")
