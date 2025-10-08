@@ -1,4 +1,5 @@
 import streamlit as st
+from openai import OpenAI
 
 st.set_page_config(page_title="AI報告書メーカー", page_icon="🧠")
 st.title("🧠 AI報告書メーカー（テスト版）")
