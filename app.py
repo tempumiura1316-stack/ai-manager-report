@@ -12,5 +12,4 @@ if st.button("週報を作成"):
     st.success("ここにAIの出力が表示されます（後で実装）")
     st.write(text)
     st.write("文字数:", len(text))
-    st.write([m.id for m in client.models.list().data])
     st.markdown(client.chat.completions.create(model="gpt-4o-mini", messages=[{"role":"user","content": f"以下は日報です。週報(見出し/実績/課題/来週のPlan)を日本語でMarkdown出力してください。\n\n{text}"}]).choices[0].message.content)
