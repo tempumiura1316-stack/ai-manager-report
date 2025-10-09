@@ -1,4 +1,5 @@
-import streamlit as st
+#諸々インポート
+import streamlit as st 
 import io
 from openai import OpenAI
 from reportlab.lib.pagesizes import A4
