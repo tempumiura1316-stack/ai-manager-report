@@ -94,4 +94,4 @@ if st.button("週報を作成"):
     
     #Word作成
     docx_buf = io.BytesIO()
-    
+    doc = Document()
