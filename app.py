@@ -14,6 +14,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 #OpenAIを使う準備
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
+#UI
 st.set_page_config(page_title="AI報告書メーカー", page_icon="🧠")
 st.title("🧠 AI報告書メーカー")
 st.write("こんにちは！これは週報作成用のアプリです。")
@@ -46,6 +47,7 @@ if purpose_option == "その他（自由入力）":
 else:
     purpose = purpose_option
 
+#AIで実行
 if st.button("週報を作成"):
     st.success("ここにAIの出力が表示されます")
     prompt = f"""
