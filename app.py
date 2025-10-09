@@ -59,7 +59,8 @@ if st.button("週報を作成"):
     model="gpt-4o-mini",
     messages=[{"role": "user", "content": prompt}]).choices[0].message.content
     st.markdown(md)
-    
+
+    #pdf作成
     buf = io.BytesIO()
     doc = SimpleDocTemplate(buf, pagesize=A4, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
     pdfmetrics.registerFont(UnicodeCIDFont("HeiseiMin-W3"))
@@ -88,4 +89,7 @@ if st.button("週報を作成"):
         mime="application/pdf",
         use_container_width=True
     )
-
+    
+    #Word作成
+    docx_buf = io.BytesIO()
+    
