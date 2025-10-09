@@ -10,6 +10,9 @@ from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+import io
+from PyPDF2 import PdfReader
+
 
 #OpenAIを使う準備
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
