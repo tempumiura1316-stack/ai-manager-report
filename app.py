@@ -26,6 +26,29 @@ with st.expander("🔒 データ取り扱いの根拠（公式）"):
         "- **Businessデータは学習に不使用**: [公式ページ](https://openai.com/business-data/)\n"
         "- **セキュリティ（第三者ペンテスト等）**: [Security](https://openai.com/security-and-privacy/)\n"
     )
+st.graphviz_chart("""
+digraph G {
+  rankdir=LR;
+  node [shape=box, style=rounded, fontsize=10];
+  subgraph cluster_local {
+    label="あなたの環境（ローカル/Streamlit Cloud）";
+    color="#bbbbbb";
+    App [label="AI報告書メーカー\\n(送信前マスキング可)"];
+    PDF [label="PDF/Word 生成\\n(ローカル)"];
+  }
+  subgraph cluster_openai {
+    label="OpenAI (APIサーバ)";
+    color="#bbbbbb";
+    API [label="OpenAI API\\n(TLS暗号化通信)"];
+    Logs [label="運用ログ\\n最大30日保管\\n(ZDR設定時は0日)"];
+  }
+  App -> API [label="必要最小限のテキスト送信"];
+  API -> App [label="AI生成結果"];
+  App -> PDF [label="ローカル変換"];
+  API -> Logs [style=dashed, label="監査/不正検知"];
+}
+""")
+
 st.write("こんにちは！これは週報作成用のアプリです。")
 
 text = st.text_area("日報を入力してください")
