@@ -123,7 +123,7 @@ if st.button("週報を作成"):
     button_label = "Word（.docx）をダウンロード"
     st.download_button(button_label, data=docx_bytes, file_name="weekly_report.docx", mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document", use_container_width=True)
 
-with st.expander("🔒 データ取り扱いの根拠（公式）"):
+with st.expander("🔒 データ取り扱いの根拠（公式リンク）"):
     st.markdown(
         "- **APIのデータは学習に不使用**（Business/Enterprise/API）: [公式ヘルプ](https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance)\n"
         "- **Enterprise Privacy（30日ログ・ZDR）**: [公式ページ](https://openai.com/enterprise-privacy/)\n"
