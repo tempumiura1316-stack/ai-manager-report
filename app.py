@@ -8,7 +8,6 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 
-
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 st.set_page_config(page_title="AI報告書メーカー", page_icon="🧠")
@@ -46,8 +45,7 @@ else:
 if st.button("週報を作成"):
     st.success("ここにAIの出力が表示されます")
     prompt = f"""
-    あなたは{sender}です。
-    あなたは{industry}業界に所属しています。
+    あなたは{industry}業界に所属している{sender}です。
     あなたは{receiver}に対して、{purpose}のための週次報告書を作成します。
     以下はあなたの日報です。これをもとに、週報(見出し/実績/課題/来週のPlan)を日本語でMarkdown形式で出力してください。
     
