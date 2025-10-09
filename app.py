@@ -15,6 +15,7 @@ st.title("🧠 AI報告書メーカー")
 st.write("こんにちは！これは週報作成用のアプリです。")
 
 text = st.text_area("日報を入力してください")
+sender_option = st.selectbox("あなたの役職を選んでください", ["営業担当", "エンジニア", "プロジェクトマネージャー", "コンサルタント", "マーケター", "人事・総務", "その他（自由入力）"])
 if st.button("週報を作成"):
     st.success("ここにAIの出力が表示されます")
     md = client.chat.completions.create(model="gpt-4o-mini",
