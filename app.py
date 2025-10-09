@@ -19,6 +19,13 @@ st.set_page_config(page_title="AI報告書メーカー", page_icon="🧠")
 st.title("🧠 AI報告書メーカー")
 st.info("当アプリは OpenAI の **API** を利用します。\n"
         "API経由の入出力は学習に利用されないため情報漏洩の心配はございません。ご安心ください。")
+with st.expander("🔒 データ取り扱いの根拠（公式）"):
+    st.markdown(
+        "- **APIのデータは学習に不使用**（Business/Enterprise/API）: [公式ヘルプ](https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance)\n"
+        "- **Enterprise Privacy（30日ログ・ZDR）**: [公式ページ](https://openai.com/enterprise-privacy/)\n"
+        "- **Businessデータは学習に不使用**: [公式ページ](https://openai.com/business-data/)\n"
+        "- **セキュリティ（第三者ペンテスト等）**: [Security](https://openai.com/security-and-privacy/)\n"
+    )
 st.write("こんにちは！これは週報作成用のアプリです。")
 
 text = st.text_area("日報を入力してください")
