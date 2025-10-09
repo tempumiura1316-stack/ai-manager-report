@@ -17,19 +17,6 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 #UI
 st.set_page_config(page_title="AI報告書メーカー", page_icon="🧠")
 st.title("🧠 AI報告書メーカー")
-st.info("当アプリは OpenAI の **API** を利用します。\n\n"
-        "API経由の入出力は学習に利用されないため情報漏洩の心配はございませんのでご安心ください。\n\n"
-        "詳細はページ下部参照")
-
-st.info(
-    """<div style="line-height:1.4;">
-    【社内ルール】当アプリは OpenAI の <b>API</b> を利用します。<br>
-    API経由の入出力は <b>学習に利用されません</b>。<br>
-    運用目的のログは最長 <b>30日で自動削除</b> されます（法令等により例外あり）。
-    </div>""",
-    icon="ℹ️",
-)
-
 st.markdown(
     """<div style="background-color:rgba(27,131,201,0.1);
                    padding:10px 16px;
@@ -38,7 +25,7 @@ st.markdown(
                    line-height:1.5;
                    font-size:14px;
                    color:#ffffffcc;">
-    <b style="color:#ffffff;">【社内ルール】</b> 当アプリは OpenAI の <b>API</b> を利用します。<br>
+    <b style="color:#ffffff;">当アプリは OpenAI の <b>API</b> を利用します。<br>
     API経由の入出力は <b>学習に利用されません</b>。<br>
     運用目的のログは最長 <b>30日で自動削除</b> されます（法令等により例外あり）。
     </div>""",
