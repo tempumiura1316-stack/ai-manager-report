@@ -65,8 +65,16 @@ if purpose_option == "その他（自由入力）":
 else:
     purpose = purpose_option
 
+#テンプレの話
 template = st.text_area("報告書テンプレ（任意）", placeholder="例：\n① 今週の成果\n② 課題\n③ 来週の方針\n④ 一言コメント", height=150)
 uploaded_template = st.file_uploader("📎 テンプレートファイルをアップロード（.txt または .pdf）", type=["txt", "pdf"])
+
+if uploaded_template is not None:
+    if uploaded_template.type == "text/plain":
+        template = uploaded_template.read().decode("utf-8")
+    elif uploaded_template.type == "application/pdf":
+        reader = PdfReader(uploaded_template)
+        template = "\n".join(page.extract_text() or "" for page in reader.pages)
 
 #AIで実行
 if st.button("週報を作成"):
