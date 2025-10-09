@@ -29,6 +29,12 @@ if receiver_option == "その他（自由入力）":
 else:
     receiver = receiver_option
 
+purpose_option = st.selectbox("この報告の目的を選んでください",["進捗報告", "成果報告", "課題共有", "承認依頼", "提案・改善案の提示", "その他（自由入力）"])
+if purpose_option == "その他（自由入力）":
+    purpose = st.text_input("報告の目的を自由に入力してください")
+else:
+    purpose = purpose_option
+
 if st.button("週報を作成"):
     st.success("ここにAIの出力が表示されます")
     md = client.chat.completions.create(model="gpt-4o-mini",
