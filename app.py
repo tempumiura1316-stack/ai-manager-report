@@ -17,6 +17,14 @@ st.write("こんにちは！これは週報作成用のアプリです。")
 
 text = st.text_area("日報を入力してください")
 
+industry_option = st.selectbox(
+    "あなたの所属業界を選んでください",
+    ["IT・ソフトウェア", "コンサルティング", "製造業", "小売・流通", "金融・保険", "広告・マーケティング", "教育・研修", "医療・ヘルスケア", "その他（自由入力）"])
+if industry_option == "その他（自由入力）":
+    industry = st.text_input("所属業界を自由に入力してください")
+else:
+    industry = industry_option
+
 sender_option = st.selectbox("あなたの役職を選んでください", ["営業担当", "エンジニア", "プロジェクトマネージャー", "コンサルタント", "マーケター", "人事・総務", "その他（自由入力）"])
 if sender_option == "その他（自由入力）":
     sender = st.text_input("あなたの役職を自由に入力してください")
