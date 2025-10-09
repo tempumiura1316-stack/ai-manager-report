@@ -30,6 +30,21 @@ st.info(
     icon="ℹ️",
 )
 
+st.markdown(
+    """<div style="background-color:#eef6fb;
+                   padding:10px 16px;
+                   border-left:6px solid #1b83c9;
+                   border-radius:4px;
+                   line-height:1.4;
+                   font-size:14px;">
+    【社内ルール】当アプリは OpenAI の <b>API</b> を利用します。<br>
+    API経由の入出力は <b>学習に利用されません</b>。<br>
+    運用目的のログは最長 <b>30日で自動削除</b> されます（法令等により例外あり）。
+    </div>""",
+    unsafe_allow_html=True
+)
+
+
 st.write("こんにちは！これは週報作成用のアプリです。")
 
 text = st.text_area("日報を入力してください")
