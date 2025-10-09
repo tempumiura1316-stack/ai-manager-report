@@ -98,3 +98,5 @@ if st.button("週報を作成"):
     style = doc.styles["Normal"]
     style.font.name = "Yu Gothic"
     style.font.size = Pt(11)
+    for raw in md.splitlines():
+        line = raw.strip()
