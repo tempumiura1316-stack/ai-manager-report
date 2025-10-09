@@ -37,9 +37,16 @@ else:
 
 if st.button("週報を作成"):
     st.success("ここにAIの出力が表示されます")
-    md = client.chat.completions.create(model="gpt-4o-mini",
-    messages=[{"role":"user","content": f"以下は日報です。週報(見出し/実績/課題/来週のPlan)を日本語でMarkdown出力してください。\n\n{text}"}]
-).choices[0].message.content
+    prompt = f"""
+    あなたは{sender}です。
+    あなたは{receiver}に対して、{purpose}のための週次報告書を作成します。
+    以下はあなたの日報です。これをもとに、週報(見出し/実績/課題/来週のPlan)を日本語でMarkdown形式で出力してください。
+    
+    {text}"""
+    
+    md = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": prompt}]).choices[0].message.content
     st.markdown(md)
     
     buf = io.BytesIO()
