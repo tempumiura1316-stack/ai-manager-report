@@ -104,5 +104,5 @@ if st.button("週報を作成"):
             doc.add_paragraph("")  # 空行を挿入
         elif line.startswith("# "):
             p = doc.add_paragraph(line[2:])
-
-
+            p.runs[0].bold = True
+            p.alignment = WD_ALIGN_PARAGRAPH.LEFT
