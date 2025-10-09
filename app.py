@@ -112,4 +112,7 @@ if st.button("週報を作成"):
             p.alignment = WD_ALIGN_PARAGRAPH.LEFT
         elif line.startswith("- "):
             doc.add_paragraph(line[2:], style="List Bullet")
-
+        else:
+            doc.add_paragraph(line)
+    doc.save(docx_buf)
+    docx_bytes = docx_buf.getvalue()
