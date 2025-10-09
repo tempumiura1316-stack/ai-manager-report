@@ -102,7 +102,14 @@ if st.button("週報を作成"):
         line = raw.strip()
         if not line:
             doc.add_paragraph("")  # 空行を挿入
+        elif line.startswith("## "):
+            p = doc.add_paragraph(line[3:])
+            p.runs[0].bold = True
+            p.alignment = WD_ALIGN_PARAGRAPH.LEFT
         elif line.startswith("# "):
             p = doc.add_paragraph(line[2:])
             p.runs[0].bold = True
             p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        elif line.startswith("- "):
+            doc.add_paragraph(line[2:], style="List Bullet")
+
