@@ -8,6 +8,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 from docx import Document
+from docx.shared import Pt
 
 #OpenAIを使う準備
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
