@@ -100,3 +100,6 @@ if st.button("週報を作成"):
     style.font.size = Pt(11)
     for raw in md.splitlines():
         line = raw.strip()
+        if not line:
+            doc.add_paragraph("")  # 空行を挿入
+
