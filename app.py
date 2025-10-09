@@ -116,3 +116,5 @@ if st.button("週報を作成"):
             doc.add_paragraph(line)
     doc.save(docx_buf)
     docx_bytes = docx_buf.getvalue()
+    button_label = "Word（.docx）をダウンロード"
+    st.download_button(button_label, data=docx_bytes, file_name="weekly_report.docx", mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document", use_container_width=True)
