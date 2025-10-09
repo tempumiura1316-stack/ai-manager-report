@@ -73,7 +73,7 @@ if st.button("週報を作成"):
     {text}"""
     
     md = client.chat.completions.create(
-    model="gpt-5",
+    model="gpt-4o-mini",
     messages=[{"role": "user", "content": prompt}]).choices[0].message.content
     st.markdown(md)
 
