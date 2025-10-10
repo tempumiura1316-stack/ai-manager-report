@@ -86,9 +86,12 @@ if uploaded_template is not None:
 #AIで実行
 if st.button("週報を作成"):
     st.success("ここにAIの出力が表示されます")
+    lang_instruction = f"出力は**{lang_label}**（言語コード: {lang_code}）で書いてください。見出しや箇条書き、注意書きもすべて{lang_label}に翻訳してください。"
     prompt = f"""
     あなたは{industry}業界に所属している{sender}です。
     あなたは{receiver}に対して、{purpose}のための週次報告書を作成します。
+
+    {lang_instruction}
     
     もし報告テンプレートが与えられている場合は、その形式・構成・トーンに**厳密に従って**週報を作成してください。
     テンプレート：{template if template.strip() else "（テンプレートなし）"}
