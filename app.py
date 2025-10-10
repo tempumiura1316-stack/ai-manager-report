@@ -11,6 +11,9 @@ from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 #多言語pdf
 from reportlab.pdfbase.ttfonts import TTFont
 import os
+def register_font_safe():
+    font_registered = False
+
 
 from docx import Document
 from docx.shared import Pt
