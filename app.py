@@ -35,7 +35,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+#多言語対応
 LANG_CHOICES = [("日本語","ja"),("English","en"),("简体中文","zh-CN"),("繁體中文","zh-TW"),("한국어","ko"),("Français","fr"),("Deutsch","de"),("Español","es"),("Português (Brasil)","pt-BR"),("Italiano","it"),("Русский","ru"),("العربية (PDF非推奨)","ar"),("हिन्दी","hi"),("Bahasa Indonesia","id"),("ไทย","th"),("Tiếng Việt","vi"),("Türkçe","tr"),("Nederlands","nl"),("Polski","pl"),("Українська","uk")]
+lang_label_to_code = {label: code for label, code in LANG_CHOICES}
 
 
 st.write("こんにちは！これは週報作成用のアプリです。")
