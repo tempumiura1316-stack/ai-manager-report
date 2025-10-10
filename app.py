@@ -17,6 +17,9 @@ def register_font_safe():
     if os.path.exists(os.path.join(FONTS_DIR, "NotoSans-Regular.ttf")):
         pdfmetrics.registerFont(TTFont("NotoSans", os.path.join(FONTS_DIR, "NotoSans-Regular.ttf")))
         base_font = "NotoSans"
+        if lang_code in {"ja", "zh-CN", "zh-TW", "ko"} and os.path.exists(os.path.join(FONTS_DIR, "NotoSansCJKjp-Regular.otf")):
+            pdfmetrics.registerFont(TTFont("NotoCJK", os.path.join(FONTS_DIR, "NotoSansCJKjp-Regular.otf")))
+            base_font = "NotoCJK"
 
 
 from docx import Document
