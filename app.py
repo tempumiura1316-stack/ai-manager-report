@@ -132,7 +132,6 @@ if st.button("週報を作成"):
     style_h2 = ParagraphStyle(name="H2JP", parent=styles["Heading2"], fontName=base_font, fontSize=13, leading=18, spaceAfter=6)
     style_bullet = ParagraphStyle(name="BulletJP", parent=styles["Normal"], fontName=base_font, fontSize=11, leading=16, leftIndent=12)
 
-    
     story = []
     lines = md.splitlines()
     for line in lines:
@@ -141,10 +140,13 @@ if st.button("週報を作成"):
             story.append(Spacer(1, 8))
             continue
         if line.startswith("# "):
-            story.append(Paragraph(line[2:], normal_style))
-            story.append(Spacer(1, 6))
+            story.append(Paragraph(line[2:], style_h1))
+        elif line.startswith("## "):
+            story.append(Paragraph(line[3:], style_h2))
+        elif line.startswith("- "):
+            story.append(Paragraph("• " + line[2:], style_bullet))
         else:
-            story.append(Paragraph(line, normal_style))
+            story.append(Paragraph(line, style_body))
     doc.build(story)
     pdf_bytes = buf.getvalue()
     
