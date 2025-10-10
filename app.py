@@ -14,6 +14,9 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 import io
 from PyPDF2 import PdfReader
 
+#多言語pdf用フォント
+FONTS_DIR = "fonts"
+
 
 #OpenAIを使う準備
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
