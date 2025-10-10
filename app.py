@@ -128,6 +128,10 @@ if st.button("週報を作成"):
     base_font = register_font_safe()
     styles = getSampleStyleSheet()
     style_body = ParagraphStyle(name="BodyJP", parent=styles["Normal"], fontName=base_font, fontSize=11, leading=16, spaceAfter=6)
+    style_h1 = ParagraphStyle(name="H1JP", parent=styles["Heading1"], fontName=base_font, fontSize=16, leading=20, spaceAfter=8)
+    style_h2 = ParagraphStyle(name="H2JP", parent=styles["Heading2"], fontName=base_font, fontSize=13, leading=18, spaceAfter=6)
+    style_bullet = ParagraphStyle(name="BulletJP", parent=styles["Normal"], fontName=base_font, fontSize=11, leading=16, leftIndent=12)
+
     
     story = []
     lines = md.splitlines()
