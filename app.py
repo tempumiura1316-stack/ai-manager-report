@@ -158,7 +158,7 @@ if st.button("週報を作成"):
         use_container_width=True
     )
     if is_rtl:
-    st.warning("⚠️ 選択した言語は右から左へ書く形式のため、PDFの文字位置が崩れる場合があります。Word（.docx）での確認を推奨します。")
+        st.warning("⚠️ 選択した言語は右から左へ書く形式のため、PDFの文字位置が崩れる場合があります。Word（.docx）での確認を推奨します。")
     
     #Word作成
     docx_buf = io.BytesIO()
