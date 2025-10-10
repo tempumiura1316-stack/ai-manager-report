@@ -10,9 +10,12 @@ from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 
 #多言語pdf
 from reportlab.pdfbase.ttfonts import TTFont
+FONTS_DIR = "fonts"
 import os
 def register_font_safe():
     font_registered = False
+    if os.path.exists(os.path.join(FONTS_DIR, "NotoSans-Regular.ttf")):
+        pass
 
 
 from docx import Document
@@ -20,10 +23,6 @@ from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 import io
 from PyPDF2 import PdfReader
-
-#多言語pdf用フォント
-FONTS_DIR = "fonts"
-
 
 #OpenAIを使う準備
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
