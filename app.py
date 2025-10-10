@@ -23,7 +23,7 @@ def register_font_safe():
         if 'base_font' not in locals():
             pdfmetrics.registerFont(UnicodeCIDFont("HeiseiMin-W3"))
             base_font = "HeiseiMin-W3"
-return base_font
+    return base_font
 
 from docx import Document
 from docx.shared import Pt
