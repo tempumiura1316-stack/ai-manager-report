@@ -40,6 +40,7 @@ LANG_CHOICES = [("日本語","ja"),("English","en"),("简体中文","zh-CN"),("�
 lang_label_to_code = {label: code for label, code in LANG_CHOICES}
 lang_label = st.selectbox("出力言語を選択してください", [l for l, _ in LANG_CHOICES], index=1)
 lang_code = lang_label_to_code[lang_label]
+is_rtl = lang_code in {"ar", "he"}
 
 st.write("こんにちは！これは週報作成用のアプリです。")
 
