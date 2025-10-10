@@ -15,7 +15,7 @@ import os
 def register_font_safe():
     font_registered = False
     if os.path.exists(os.path.join(FONTS_DIR, "NotoSans-Regular.ttf")):
-        pass
+        pdfmetrics.registerFont(TTFont("NotoSans", os.path.join(FONTS_DIR, "NotoSans-Regular.ttf")))
 
 
 from docx import Document
