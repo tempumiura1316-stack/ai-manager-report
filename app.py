@@ -14,15 +14,16 @@ FONTS_DIR = "fonts"
 import os
 def register_font_safe():
     font_registered = False
+    base_font = None
     if os.path.exists(os.path.join(FONTS_DIR, "NotoSans-Regular.ttf")):
         pdfmetrics.registerFont(TTFont("NotoSans", os.path.join(FONTS_DIR, "NotoSans-Regular.ttf")))
         base_font = "NotoSans"
-        if lang_code in {"ja", "zh-CN", "zh-TW", "ko"} and os.path.exists(os.path.join(FONTS_DIR, "NotoSansCJKjp-Regular.otf")):
-            pdfmetrics.registerFont(TTFont("NotoCJK", os.path.join(FONTS_DIR, "NotoSansCJKjp-Regular.otf")))
-            base_font = "NotoCJK"
-        if 'base_font' not in locals():
-            pdfmetrics.registerFont(UnicodeCIDFont("HeiseiMin-W3"))
-            base_font = "HeiseiMin-W3"
+    if lang_code in {"ja", "zh-CN", "zh-TW", "ko"} and os.path.exists(os.path.join(FONTS_DIR, "NotoSansCJKjp-Regular.otf")):
+        pdfmetrics.registerFont(TTFont("NotoCJK", os.path.join(FONTS_DIR, "NotoSansCJKjp-Regular.otf")))
+        base_font = "NotoCJK"
+    if not base_font:
+        pdfmetrics.registerFont(UnicodeCIDFont("HeiseiMin-W3"))
+        base_font = "HeiseiMin-W3"
     return base_font
 
 from docx import Document
